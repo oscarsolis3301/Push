@@ -1,5 +1,5 @@
 print("Hello there, this is a test")
 
-whie(True):
+while(True):
     #Test
     print("Hello")
