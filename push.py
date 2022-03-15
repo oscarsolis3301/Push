@@ -1,29 +1,19 @@
-# bot.py
-from lib2to3.pgen2 import token
-import os
+# Push.py
 
+
+import json
 import discord
-from dotenv import load_dotenv
 
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
+with open('./config.json', 'r') as f:
+    data = json.load(f)
+bot_token = data['DISCORD_TOKEN']
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    print('THIS IS WORKING')
-    for guild in client.guilds:
-        if guild.name == GUILD:
-            break
-
     print(
-        f'{client.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})\n'
+        f'{client.user} is online!\n'
     )
 
-    members = '\n - '.join([member.name for member in guild.members])
-    print(f'Guild Members:\n - {members}')
-
-client.run(TOKEN)
+client.run(bot_token)
