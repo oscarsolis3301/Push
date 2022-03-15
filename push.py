@@ -1,5 +1,9 @@
-print("Hello there, this is a test")
+import discord
 
-while(True):
-    #Test
-    print("Hello")
+class MyClient(discord.Client):
+    async def on_message(self, message):
+        if message.author == self.user:
+            return
+
+        if message.content.startswith('$hello'):
+            await message.channel.send('Hello World!')
