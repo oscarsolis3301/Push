@@ -18,6 +18,7 @@ async def on_ready():
     print(
         f'{client.user} is online!\n'
     )
+    
 
 @client.event
 async def on_member_join(member):
