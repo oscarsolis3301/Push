@@ -2,6 +2,7 @@
 
 
 import json
+from re import L
 import discord
 import asyncio
 
@@ -27,7 +28,12 @@ async def on_member_join(member):
         f'Hi {member.name}, welcome to my Discord server!'
     )
 
-
+'''@client.event
+async def auto_response(message):
+    if message.content.startswith('$hi'):
+        channel = message.channel
+        await channel.send('hello human')
+'''
 
 @client.event
 async def on_message(message):
@@ -44,5 +50,9 @@ async def on_message(message):
             await channel.send('👎')
         else:
             await channel.send('👍')
+    
+    elif message.content.startswith('$hi'):
+        channel = message.channel
+        await channel.send('Hello there human')
     
 client.run(bot_token)
